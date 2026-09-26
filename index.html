@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Моё портфолио</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#080808;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+padding:25px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:relative;
+z-index:10;
+animation:headerDown .8s ease both;
+}
+
+@keyframes headerDown{
+
+from{
+opacity:0;
+transform:translateY(-20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+transition:.3s;
+}
+
+.logo:hover{
+color:#a3ff12;
+transform:translateX(5px);
+}
+
+nav{
+display:flex;
+align-items:center;
+gap:30px;
+}
+
+nav a{
+color:#aaa;
+text-decoration:none;
+position:relative;
+transition:.3s;
+}
+
+nav a:hover{
+color:white;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-7px;
+width:0;
+height:2px;
+background:#a3ff12;
+transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+.login-button{
+border:1px solid #a3ff12;
+color:#a3ff12;
+background:transparent;
+padding:10px 20px;
+border-radius:50px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.login-button:hover{
+background:#a3ff12;
+color:#000;
+transform:scale(1.05);
+}
+
+
+/* HERO */
+
+.hero{
+min-height:80vh;
+padding:100px 7%;
+display:flex;
+align-items:center;
+}
+
+.hero-content{
+max-width:800px;
+}
+
+.small-text{
+color:#a3ff12;
+font-size:18px;
+margin-bottom:20px;
+opacity:0;
+transform:translateX(-20px);
+transition:.8s ease;
+}
+
+.hero-content.show .small-text{
+opacity:1;
+transform:translateX(0);
+}
+
+h1{
+font-size:clamp(55px,6vw,120px);
+line-height:.95;
+margin-bottom:30px;
+opacity:0;
+transform:translateY(30px);
+transition:.9s ease .15s;
+}
+
+.hero-content.show h1{
+opacity:1;
+transform:translateY(0);
+}
+
+.description{
+color:#aaa;
+font-size:20px;
+line-height:1.6;
+max-width:650px;
+margin-bottom:40px;
+opacity:0;
+transform:translateY(20px);
+transition:.9s ease .3s;
+}
+
+.hero-content.show .description{
+opacity:1;
+transform:translateY(0);
+}
+
+.button{
+display:inline-block;
+background:#a3ff12;
+color:#000;
+padding:18px 30px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+.button:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px rgba(163,255,18,.25);
+}
+
+
+/* SECTIONS */
+
+.projects{
+padding:100px 7%;
+}
+
+.projects h2{
+font-size:55px;
+margin-bottom:50px;
+opacity:0;
+transform:translateY(30px);
+transition:.8s ease;
+}
+
+.projects h2.show{
+opacity:1;
+transform:translateY(0);
+}
+
+
+/* SERVICES */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+}
+
+.card{
+background:#151515;
+border:1px solid #292929;
+border-radius:25px;
+padding:35px;
+min-height:300px;
+opacity:0;
+transform:translateY(40px);
+transition:
+opacity .7s ease,
+transform .3s ease,
+border-color .3s ease,
+box-shadow .3s ease;
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#a3ff12;
+box-shadow:0 15px 50px rgba(0,0,0,.4);
+}
+
+.card h3{
+font-size:30px;
+margin-bottom:15px;
+}
+
+.card p{
+color:#999;
+line-height:1.6;
+margin-bottom:25px;
+}
+
+.price{
+font-size:24px;
+font-weight:bold;
+margin-bottom:20px;
+color:#a3ff12;
+}
+
+.buy-button{
+display:inline-block;
+border:none;
+background:#a3ff12;
+color:#000;
+padding:13px 22px;
+border-radius:50px;
+font-weight:bold;
+cursor:pointer;
+text-decoration:none;
+transition:.3s;
+}
+
+.buy-button:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(163,255,18,.2);
+}
+
+
+/* FUTURE PROJECTS */
+
+.future-projects{
+padding:100px 7%;
+}
+
+.future-title{
+font-size:55px;
+margin-bottom:15px;
+opacity:0;
+transform:translateY(30px);
+transition:.8s ease;
+}
+
+.future-title.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.future-subtitle{
+color:#777;
+font-size:18px;
+line-height:1.6;
+max-width:650px;
+margin-bottom:50px;
+opacity:0;
+transform:translateY(20px);
+transition:.8s ease .15s;
+}
+
+.future-subtitle.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.future-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+}
+
+.future-card{
+background:#101010;
+border:1px solid #292929;
+border-radius:25px;
+padding:35px;
+min-height:280px;
+position:relative;
+overflow:hidden;
+opacity:0;
+transform:translateY(50px) scale(.98);
+transition:
+opacity .8s ease,
+transform .5s ease,
+border-color .3s ease;
+}
+
+.future-card.show{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+.future-card:hover{
+transform:translateY(-8px);
+border-color:#a3ff12;
+}
+
+.future-card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:3px;
+background:#a3ff12;
+transform:scaleX(0);
+transform-origin:left;
+transition:.4s;
+}
+
+.future-card:hover::before{
+transform:scaleX(1);
+}
+
+.future-number{
+color:#a3ff12;
+font-size:14px;
+font-weight:bold;
+margin-bottom:25px;
+letter-spacing:2px;
+}
+
+.future-card h3{
+font-size:30px;
+margin-bottom:15px;
+}
+
+.future-card p{
+color:#888;
+line-height:1.6;
+margin-bottom:25px;
+}
+
+.future-status{
+display:inline-block;
+padding:8px 14px;
+border:1px solid #333;
+border-radius:50px;
+color:#a3ff12;
+font-size:13px;
+margin-right:8px;
+}
+
+.future-date{
+color:#666;
+font-size:13px;
+}
+
+
+/* ACCOUNT */
+
+.account{
+display:none;
+}
+
+.account.active{
+display:block;
+}
+
+.account-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+margin-bottom:35px;
+}
+
+.account-header h2{
+font-size:45px;
+}
+
+.logout-button{
+background:transparent;
+border:1px solid #333;
+color:#aaa;
+padding:11px 20px;
+border-radius:50px;
+cursor:pointer;
+transition:.3s;
+}
+
+.logout-button:hover{
+color:white;
+border-color:#a3ff12;
+}
+
+.account-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.account-card{
+background:#151515;
+border:1px solid #292929;
+border-radius:25px;
+padding:30px;
+}
+
+.account-card h3{
+font-size:25px;
+margin-bottom:25px;
+}
+
+
+/* PROFILE */
+
+.profile-top{
+display:flex;
+align-items:center;
+gap:20px;
+margin-bottom:25px;
+}
+
+.avatar{
+width:80px;
+height:80px;
+min-width:80px;
+border-radius:50%;
+background:#a3ff12;
+color:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+font-weight:bold;
+overflow:hidden;
+}
+
+.avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.profile-name{
+font-size:23px;
+font-weight:bold;
+}
+
+.profile-email{
+color:#777;
+margin-top:5px;
+word-break:break-word;
+}
+
+.file-label{
+display:inline-block;
+background:#222;
+color:#aaa;
+padding:10px 15px;
+border-radius:50px;
+cursor:pointer;
+font-size:14px;
+transition:.3s;
+}
+
+.file-label:hover{
+color:white;
+background:#292929;
+}
+
+#avatarInput{
+display:none;
+}
+
+
+/* FORMS */
+
+.form-group{
+margin-bottom:17px;
+}
+
+.form-group label{
+display:block;
+color:#aaa;
+margin-bottom:8px;
+font-size:14px;
+}
+
+.form-group input,
+.form-group textarea{
+width:100%;
+padding:14px 16px;
+background:#080808;
+border:1px solid #292929;
+border-radius:12px;
+color:white;
+outline:none;
+font-size:16px;
+transition:.3s;
+font-family:Arial,sans-serif;
+}
+
+.form-group textarea{
+resize:vertical;
+min-height:110px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+border-color:#a3ff12;
+box-shadow:0 0 15px rgba(163,255,18,.08);
+}
+
+.save-button{
+border:none;
+background:#a3ff12;
+color:#000;
+padding:13px 22px;
+border-radius:50px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.save-button:hover{
+transform:scale(1.03);
+}
+
+
+/* ORDERS */
+
+.orders{
+display:grid;
+gap:12px;
+max-height:350px;
+overflow-y:auto;
+}
+
+.order{
+background:#080808;
+border:1px solid #292929;
+border-radius:15px;
+padding:17px;
+}
+
+.order-top{
+display:flex;
+justify-content:space-between;
+gap:15px;
+margin-bottom:8px;
+}
+
+.order-name{
+font-weight:bold;
+}
+
+.order-price{
+color:#a3ff12;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.order-date{
+color:#666;
+font-size:13px;
+margin-top:5px;
+}
+
+.order-comment{
+color:#888;
+font-size:14px;
+margin-top:10px;
+line-height:1.5;
+}
+
+.order-status{
+display:inline-block;
+margin-top:10px;
+padding:5px 10px;
+border-radius:50px;
+background:#17200c;
+color:#a3ff12;
+font-size:12px;
+}
+
+
+/* PAYMENTS */
+
+.payments{
+display:grid;
+gap:12px;
+max-height:350px;
+overflow-y:auto;
+}
+
+.payment{
+background:#080808;
+border:1px solid #292929;
+border-radius:15px;
+padding:17px;
+}
+
+.payment-top{
+display:flex;
+justify-content:space-between;
+gap:15px;
+}
+
+.payment-name{
+font-weight:bold;
+}
+
+.payment-price{
+color:#a3ff12;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.payment-date{
+color:#666;
+font-size:13px;
+margin-top:7px;
+}
+
+.payment-status{
+color:#a3ff12;
+font-size:13px;
+margin-top:7px;
+}
+
+
+/* MODALS */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.82);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:100;
+opacity:0;
+visibility:hidden;
+transition:.3s;
+}
+
+.modal.active{
+opacity:1;
+visibility:visible;
+}
+
+.modal-box{
+width:100%;
+max-width:460px;
+max-height:90vh;
+overflow-y:auto;
+background:#151515;
+border:1px solid #292929;
+border-radius:25px;
+padding:35px;
+position:relative;
+transform:translateY(30px) scale(.95);
+transition:.3s;
+}
+
+.modal.active .modal-box{
+transform:translateY(0) scale(1);
+}
+
+.close{
+position:absolute;
+top:18px;
+right:22px;
+border:none;
+background:transparent;
+color:#777;
+font-size:28px;
+cursor:pointer;
+transition:.3s;
+}
+
+.close:hover{
+color:white;
+transform:rotate(90deg);
+}
+
+.modal-box h2{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.modal-description{
+color:#888;
+margin-bottom:25px;
+line-height:1.5;
+}
+
+.switch-form{
+text-align:center;
+margin-top:20px;
+color:#777;
+font-size:14px;
+}
+
+.switch-form button{
+background:none;
+border:none;
+color:#a3ff12;
+cursor:pointer;
+font-weight:bold;
+}
+
+.error{
+color:#ff5c5c;
+font-size:14px;
+margin-bottom:15px;
+display:none;
+}
+
+.error.show{
+display:block;
+}
+
+
+/* FOOTER */
+
+footer{
+padding:50px 7%;
+color:#777;
+border-top:1px solid #222;
+}
+
+.footer-telegram{
+color:#a3ff12;
+text-decoration:none;
+transition:.3s;
+}
+
+.footer-telegram:hover{
+color:white;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+header{
+padding:20px;
+}
+
+nav{
+gap:10px;
+}
+
+nav a{
+display:none;
+}
+
+.hero{
+padding:80px 20px;
+min-height:85vh;
+}
+
+.projects,
+.future-projects{
+padding:70px 20px;
+}
+
+.cards,
+.future-grid{
+grid-template-columns:1fr;
+}
+
+.projects h2,
+.future-title{
+font-size:40px;
+}
+
+.account-grid{
+grid-template-columns:1fr;
+}
+
+.account-header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.account-header h2{
+font-size:35px;
+}
+
+.card,
+.future-card{
+padding:28px;
+}
+
+}
+
+@media(max-width:450px){
+
+header{
+padding:18px 15px;
+}
+
+.logo{
+font-size:20px;
+}
+
+.login-button{
+padding:9px 15px;
+}
+
+.hero{
+padding:70px 15px;
+}
+
+.projects,
+.future-projects{
+padding:60px 15px;
+}
+
+h1{
+font-size:50px;
+}
+
+.description{
+font-size:17px;
+}
+
+.projects h2,
+.future-title{
+font-size:36px;
+}
+
+.card,
+.future-card{
+padding:25px;
+border-radius:20px;
+}
+
+.card h3,
+.future-card h3{
+font-size:26px;
+}
+
+.modal{
+padding:12px;
+}
+
+.modal-box{
+padding:25px;
+border-radius:20px;
+}
+
+.account-card{
+padding:25px;
+border-radius:20px;
+}
+
+}
+
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+*{
+scroll-behavior:auto!important;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+PORTFOLIO
+</div>
+
+<nav>
+
+<a href="#about">
+Обо мне
+</a>
+
+<a href="#services">
+Услуги
+</a>
+
+<a href="#future">
+Будущие проекты
+</a>
+
+<a href="#contact">
+Контакты
+</a>
+
+<button class="login-button" id="loginButton">
+Войти
+</button>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="about">
+
+<div class="hero-content">
+
+<div class="small-text">
+WEB DESIGNER / DEVELOPER
+</div>
+
+<h1>
+Создаю сайты,<br>
+которые цепляют.
+</h1>
+
+<p class="description">
+Современный дизайн, анимации и удобный интерфейс.
+Здесь можно посмотреть мои услуги и заказать разработку сайта.
+</p>
+
+<a class="button" href="#services">
+Смотреть услуги
+</a>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="projects" id="services">
+
+<h2>
+Мои услуги
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+Сайт-визитка
+</h3>
+
+<p>
+Современный одностраничный сайт
+для презентации человека, специалиста или бизнеса.
+</p>
+
+<div class="price">
+5 000 ₽
+</div>
+
+<a
+class="buy-button"
+href="https://t.me/FlorraSoo_dizain"
+target="_blank"
+rel="noopener noreferrer"
+
+>
+
+Заказать </a>
+
+</div>
+
+<div class="card">
+
+<h3>
+Landing Page
+</h3>
+
+<p>
+Красивый продающий сайт
+для продукта, услуги или компании.
+</p>
+
+<div class="price">
+8 000 ₽
+</div>
+
+<a
+class="buy-button"
+href="https://t.me/FlorraSoo_dizain"
+target="_blank"
+rel="noopener noreferrer"
+
+>
+
+Заказать </a>
+
+</div>
+
+<div class="card">
+
+<h3>
+Интернет-магазин
+</h3>
+
+<p>
+Современный магазин с каталогом,
+товарами и удобным интерфейсом.
+</p>
+
+<div class="price">
+15 000 ₽
+</div>
+
+<a
+class="buy-button"
+href="https://t.me/FlorraSoo_dizain"
+target="_blank"
+rel="noopener noreferrer"
+
+>
+
+Заказать </a>
+
+</div>
+
+<div class="card">
+
+<h3>
+Индивидуальный проект
+</h3>
+
+<p>
+Сайт под индивидуальные требования,
+особый дизайн и функционал.
+</p>
+
+<div class="price">
+от 20 000 ₽
+</div>
+
+<a
+class="buy-button"
+href="https://t.me/FlorraSoo_dizain"
+target="_blank"
+rel="noopener noreferrer"
+
+>
+
+Обсудить проект </a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FUTURE PROJECTS -->
+
+<section class="future-projects" id="future">
+
+<h2 class="future-title">
+Будущие проекты
+</h2>
+
+<p class="future-subtitle">
+Здесь будут проекты, которые я планирую реализовать
+в ближайшее время. Следи за обновлениями.
+</p>
+
+<div class="future-grid">
+
+<div class="future-card">
+
+<div class="future-number">
+PROJECT 01
+</div>
+
+<h3>
+Новый веб-сервис
+</h3>
+
+<p>
+Большой проект с современным интерфейсом,
+анимациями и личным кабинетом.
+</p>
+
+<span class="future-status">
+В разработке
+</span>
+
+<span class="future-date">
+2026
+</span>
+
+</div>
+
+<div class="future-card">
+
+<div class="future-number">
+PROJECT 02
+</div>
+
+<h3>
+Мобильное приложение
+</h3>
+
+<p>
+Идея приложения с удобным интерфейсом
+и современным пользовательским опытом.
+</p>
+
+<span class="future-status">
+В планах
+</span>
+
+<span class="future-date">
+2026
+</span>
+
+</div>
+
+<div class="future-card">
+
+<div class="future-number">
+PROJECT 03
+</div>
+
+<h3>
+Онлайн-платформа
+</h3>
+
+<p>
+Платформа для работы с проектами,
+заказами и клиентами.
+</p>
+
+<span class="future-status">
+В планах
+</span>
+
+<span class="future-date">
+2026
+</span>
+
+</div>
+
+<div class="future-card">
+
+<div class="future-number">
+PROJECT 04
+</div>
+
+<h3>
+Экспериментальный проект
+</h3>
+
+<p>
+Новый экспериментальный проект,
+который покажет мои навыки в разработке.
+</p>
+
+<span class="future-status">
+Идея
+</span>
+
+<span class="future-date">
+Скоро
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ACCOUNT -->
+
+<section class="projects account" id="account">
+
+<div class="account-header">
+
+<h2>
+Личный кабинет
+</h2>
+
+<button
+class="logout-button"
+id="logoutButton"
+
+>
+
+Выйти </button>
+
+</div>
+
+<div class="account-grid">
+
+<div class="account-card">
+
+<h3>
+Профиль
+</h3>
+
+<div class="profile-top">
+
+<div class="avatar" id="avatar">
+U
+</div>
+
+<div>
+
+<div
+class="profile-name"
+id="profileName"
+>
+—
+</div>
+
+<div
+class="profile-email"
+id="profileEmail"
+>
+—
+</div>
+
+</div>
+
+</div>
+
+<label class="file-label">
+
+Изменить аватар
+
+<input
+type="file"
+id="avatarInput"
+accept="image/*"
+
+>
+
+</label>
+
+</div>
+
+<div class="account-card">
+
+<h3>
+Редактирование
+</h3>
+
+<div class="form-group">
+
+<label>
+Имя
+</label>
+
+<input
+type="text"
+id="editName"
+placeholder="Твоё имя"
+
+>
+
+</div>
+
+<div class="form-group">
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+id="editEmail"
+placeholder="[example@mail.com](mailto:example@mail.com)"
+
+>
+
+</div>
+
+<button
+class="save-button"
+id="saveProfile"
+
+>
+
+Сохранить </button>
+
+</div>
+
+<div class="account-card">
+
+<h3>
+Мои заказы
+</h3>
+
+<div
+class="orders"
+id="orders"
+>
+
+<div class="empty">
+Заказы будут отображаться здесь.
+</div>
+
+</div>
+
+</div>
+
+<div class="account-card">
+
+<h3>
+История оплат
+</h3>
+
+<div
+class="payments"
+id="payments"
+>
+
+<div class="empty">
+История оплат будет отображаться здесь.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+<div>
+© 2026 Моё портфолио
+</div>
+
+<br>
+
+<div>
+Связаться со мной:
+<a
+class="footer-telegram"
+href="https://t.me/FlorraSoo_dizain"
+target="_blank"
+rel="noopener noreferrer"
+>
+Telegram
+</a>
+</div>
+
+</footer>
+
+<!-- AUTH MODAL -->
+
+<div class="modal" id="authModal">
+
+<div class="modal-box">
+
+<button class="close" id="closeAuth">
+×
+</button>
+
+<div id="loginForm">
+
+<h2>
+Вход
+</h2>
+
+<p class="modal-description">
+Войди в свой личный кабинет.
+</p>
+
+<div class="error" id="loginError">
+Неверный email или пароль.
+</div>
+
+<div class="form-group">
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+id="loginEmail"
+placeholder="[example@mail.com](mailto:example@mail.com)"
+
+>
+
+</div>
+
+<div class="form-group">
+
+<label>
+Пароль
+</label>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Введите пароль"
+
+>
+
+</div>
+
+<button
+class="form-submit"
+id="loginSubmit"
+
+>
+
+Войти </button>
+
+<div class="switch-form">
+
+Нет аккаунта?
+
+<button id="showRegister">
+Зарегистрироваться
+</button>
+
+</div>
+
+</div>
+
+<div id="registerForm" style="display:none;">
+
+<h2>
+Регистрация
+</h2>
+
+<p class="modal-description">
+Создай аккаунт, чтобы получить доступ к кабинету.
+</p>
+
+<div class="error" id="registerError">
+Заполни все поля.
+</div>
+
+<div class="form-group">
+
+<label>
+Имя
+</label>
+
+<input
+type="text"
+id="registerName"
+placeholder="Твоё имя"
+
+>
+
+</div>
+
+<div class="form-group">
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+id="registerEmail"
+placeholder="[example@mail.com](mailto:example@mail.com)"
+
+>
+
+</div>
+
+<div class="form-group">
+
+<label>
+Пароль
+</label>
+
+<input
+type="password"
+id="registerPassword"
+placeholder="Минимум 6 символов"
+
+>
+
+</div>
+
+<button
+class="form-submit"
+id="registerSubmit"
+
+>
+
+Создать аккаунт </button>
+
+<div class="switch-form">
+
+Уже есть аккаунт?
+
+<button id="showLogin">
+Войти
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =========================
+   REPEATABLE ANIMATIONS
+========================= */
+
+const hero=document.querySelector(".hero-content");
+
+const heroObserver=new IntersectionObserver(
+(entries)=>{
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}else{
+entry.target.classList.remove("show");
+}
+
+});
+},
+{threshold:.25}
+);
+
+heroObserver.observe(hero);
+
+
+const projectsTitle=document.querySelector(".projects h2");
+
+const titleObserver=new IntersectionObserver(
+(entries)=>{
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}else{
+entry.target.classList.remove("show");
+}
+
+});
+},
+{threshold:.2}
+);
+
+titleObserver.observe(projectsTitle);
+
+
+/* SERVICE CARDS */
+
+const cards=document.querySelectorAll(".card");
+
+const cardsObserver=new IntersectionObserver(
+(entries)=>{
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}else{
+entry.target.classList.remove("show");
+}
+
+});
+},
+{threshold:.15}
+);
+
+cards.forEach(card=>{
+cardsObserver.observe(card);
+});
+
+
+/* FUTURE PROJECTS */
+
+const futureTitle=
+document.querySelector(".future-title");
+
+const futureSubtitle=
+document.querySelector(".future-subtitle");
+
+const futureCards=
+document.querySelectorAll(".future-card");
+
+
+const futureObserver=new IntersectionObserver(
+(entries)=>{
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}else{
+entry.target.classList.remove("show");
+}
+
+});
+},
+{threshold:.15}
+);
+
+
+futureObserver.observe(futureTitle);
+futureObserver.observe(futureSubtitle);
+
+futureCards.forEach(card=>{
+futureObserver.observe(card);
+});
+
+
+/* =========================
+   AUTH
+========================= */
+
+const loginButton=
+document.getElementById("loginButton");
+
+const authModal=
+document.getElementById("authModal");
+
+const closeAuth=
+document.getElementById("closeAuth");
+
+const loginForm=
+document.getElementById("loginForm");
+
+const registerForm=
+document.getElementById("registerForm");
+
+
+loginButton.addEventListener("click",()=>{
+
+if(localStorage.getItem("portfolioLoggedIn")==="true"){
+
+document
+.getElementById("account")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+return;
+
+}
+
+authModal.classList.add("active");
+
+});
+
+
+closeAuth.addEventListener("click",()=>{
+authModal.classList.remove("active");
+});
+
+
+authModal.addEventListener("click",event=>{
+
+if(event.target===authModal){
+authModal.classList.remove("active");
+}
+
+});
+
+
+document
+.getElementById("showRegister")
+.addEventListener("click",()=>{
+
+loginForm.style.display="none";
+registerForm.style.display="block";
+
+});
+
+
+document
+.getElementById("showLogin")
+.addEventListener("click",()=>{
+
+registerForm.style.display="none";
+loginForm.style.display="block";
+
+});
+
+
+/* REGISTER */
+
+document
+.getElementById("registerSubmit")
+.addEventListener("click",()=>{
+
+const name=
+document.getElementById("registerName").value.trim();
+
+const email=
+document.getElementById("registerEmail").value.trim();
+
+const password=
+document.getElementById("registerPassword").value;
+
+const error=
+document.getElementById("registerError");
+
+
+if(!name||!email||!password){
+
+error.textContent="Заполни все поля.";
+error.classList.add("show");
+
+return;
+
+}
+
+if(password.length<6){
+
+error.textContent=
+"Пароль должен содержать минимум 6 символов.";
+
+error.classList.add("show");
+
+return;
+
+}
+
+
+const user={
+
+name:name,
+email:email,
+password:password,
+avatar:"",
+orders:[],
+payments:[]
+
+};
+
+
+localStorage.setItem(
+"portfolioUser",
+JSON.stringify(user)
+);
+
+localStorage.setItem(
+"portfolioLoggedIn",
+"true"
+);
+
+error.classList.remove("show");
+
+authModal.classList.remove("active");
+
+updateAccount();
+
+alert("Аккаунт успешно создан!");
+
+});
+
+
+/* LOGIN */
+
+document
+.getElementById("loginSubmit")
+.addEventListener("click",()=>{
+
+const email=
+document.getElementById("loginEmail").value.trim();
+
+const password=
+document.getElementById("loginPassword").value;
+
+const error=
+document.getElementById("loginError");
+
+const savedUser=
+JSON.parse(
+localStorage.getItem("portfolioUser")
+);
+
+
+if(
+!savedUser||
+savedUser.email!==email||
+savedUser.password!==password
+){
+
+error.classList.add("show");
+
+return;
+
+}
+
+
+error.classList.remove("show");
+
+localStorage.setItem(
+"portfolioLoggedIn",
+"true"
+);
+
+authModal.classList.remove("active");
+
+updateAccount();
+
+});
+
+
+/* ACCOUNT */
+
+function updateAccount(){
+
+const user=
+JSON.parse(
+localStorage.getItem("portfolioUser")
+);
+
+const loggedIn=
+localStorage.getItem("portfolioLoggedIn");
+
+const account=
+document.getElementById("account");
+
+
+if(user&&loggedIn==="true"){
+
+account.classList.add("active");
+
+document.getElementById("profileName").textContent=user.name;
+
+document.getElementById("profileEmail").textContent=user.email;
+
+document.getElementById("editName").value=user.name;
+
+document.getElementById("editEmail").value=user.email;
+
+
+const avatar=
+document.getElementById("avatar");
+
+
+if(user.avatar){
+
+avatar.innerHTML=
+`<img src="${user.avatar}" alt="Аватар">`;
+
+}else{
+
+avatar.textContent=
+user.name.charAt(0).toUpperCase();
+
+}
+
+
+loginButton.textContent="Кабинет";
+
+renderOrders(user);
+renderPayments(user);
+
+}else{
+
+account.classList.remove("active");
+
+loginButton.textContent="Войти";
+
+}
+
+}
+
+
+/* SAVE PROFILE */
+
+document
+.getElementById("saveProfile")
+.addEventListener("click",()=>{
+
+const user=
+JSON.parse(
+localStorage.getItem("portfolioUser")
+);
+
+if(!user)return;
+
+
+const name=
+document.getElementById("editName").value.trim();
+
+const email=
+document.getElementById("editEmail").value.trim();
+
+
+if(!name||!email){
+
+alert("Заполни имя и email.");
+
+return;
+
+}
+
+
+user.name=name;
+user.email=email;
+
+
+localStorage.setItem(
+"portfolioUser",
+JSON.stringify(user)
+);
+
+updateAccount();
+
+alert("Профиль сохранён!");
+
+});
+
+
+/* AVATAR */
+
+document
+.getElementById("avatarInput")
+.addEventListener("change",event=>{
+
+const file=event.target.files[0];
+
+if(!file)return;
+
+
+if(!file.type.startsWith("image/")){
+
+alert("Выбери изображение.");
+
+return;
+
+}
+
+
+const reader=new FileReader();
+
+reader.onload=()=>{
+
+const user=
+JSON.parse(
+localStorage.getItem("portfolioUser")
+);
+
+if(!user)return;
+
+user.avatar=reader.result;
+
+localStorage.setItem(
+"portfolioUser",
+JSON.stringify(user)
+);
+
+updateAccount();
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+
+/* ORDERS */
+
+function renderOrders(user){
+
+const orders=
+document.getElementById("orders");
+
+
+if(!user.orders||user.orders.length===0){
+
+orders.innerHTML=
+`
+<div class="empty">
+Заказов пока нет.
+</div>
+`;
+
+return;
+
+}
+
+
+orders.innerHTML="";
+
+
+user.orders.forEach(order=>{
+
+const element=
+document.createElement("div");
+
+element.className="order";
+
+
+element.innerHTML=`
+
+<div class="order-top">
+
+<div class="order-name">
+${escapeHTML(order.name)}
+</div>
+
+<div class="order-price">
+${Number(order.price).toLocaleString("ru-RU")} ₽
+</div>
+
+</div>
+
+<div class="order-date">
+Заказ №${order.id}
+</div>
+
+<div class="order-date">
+${escapeHTML(order.date)}
+</div>
+
+<span class="order-status">
+${escapeHTML(order.status)}
+</span>
+
+`;
+
+
+orders.appendChild(element);
+
+});
+
+}
+
+
+/* PAYMENTS */
+
+function renderPayments(user){
+
+const payments=
+document.getElementById("payments");
+
+
+if(!user.payments||user.payments.length===0){
+
+payments.innerHTML=
+`
+<div class="empty">
+Оплат пока нет.
+</div>
+`;
+
+return;
+
+}
+
+
+payments.innerHTML="";
+
+
+user.payments.forEach(payment=>{
+
+const element=
+document.createElement("div");
+
+element.className="payment";
+
+
+element.innerHTML=`
+
+<div class="payment-top">
+
+<div class="payment-name">
+${escapeHTML(payment.name)}
+</div>
+
+<div class="payment-price">
+${Number(payment.price).toLocaleString("ru-RU")} ₽
+</div>
+
+</div>
+
+<div class="payment-date">
+${escapeHTML(payment.date)}
+</div>
+
+<div class="payment-status">
+✓ Оплата подтверждена
+</div>
+
+`;
+
+
+payments.appendChild(element);
+
+});
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* LOGOUT */
+
+document
+.getElementById("logoutButton")
+.addEventListener("click",()=>{
+
+localStorage.setItem(
+"portfolioLoggedIn",
+"false"
+);
+
+updateAccount();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
+
+/* START */
+
+updateAccount();
+
+</script>
+
+</body>
+</html>
